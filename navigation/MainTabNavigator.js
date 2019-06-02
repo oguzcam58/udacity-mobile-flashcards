@@ -4,10 +4,16 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import TabBarIcon from '../components/TabBarIcon';
 import DecksScreen from '../screens/DecksScreen';
+import DeckDetailScreen from '../screens/DeckDetailScreen';
 import AddDeckScreen from '../screens/AddDeckScreen';
+import QuizScreen from '../screens/QuizScreen';
+import AddQuestionScreen from '../screens/AddQuestionScreen';
 
 const DecksStack = createStackNavigator({
   Decks: DecksScreen,
+  DeckDetails: DeckDetailScreen,
+  AddQuestion: AddQuestionScreen,
+  Quiz: QuizScreen,
 });
 
 DecksStack.navigationOptions = {
@@ -15,11 +21,7 @@ DecksStack.navigationOptions = {
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={
-        Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
-      }
+      name='list'
     />
   ),
 };
@@ -29,11 +31,11 @@ const AddDeckStack = createStackNavigator({
 });
 
 AddDeckStack.navigationOptions = {
-  tabBarLabel: 'Add Deck',
+  tabBarLabel: 'Add A Deck',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'}
+      name='add-to-list'
     />
   ),
 };
