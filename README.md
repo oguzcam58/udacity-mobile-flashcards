@@ -10,7 +10,11 @@ _PS: Alternatively you can use `yarn` instead of `npm`_
 
 ## Details
 
-With this app, you can create decks of cards to remember and train yourself with topics that you are interested. You can quiz yourself and see how great your memory is. 
+With this app, you can create decks of cards to remember and train yourself with topics that you are interested. You can quiz yourself and see how great your memory is.
+
+## Tests
+
+This app is tested on an Android phone. Not tested on an iOS phone. 
 
 ## License
 
