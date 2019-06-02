@@ -42,7 +42,25 @@ class QuizScreen extends React.Component {
     }
 
     if (questionIndex > deck.questions.length) {
-      return (<ScoreCard score={score} title={deck.title} />);
+      return (
+        <View style={styles.container}>
+          <ScoreCard score={score} title={deck.title} />
+          <View style={{flex: 1, justifyContent: 'flex-end' }}>
+            <TouchableOpacity style={styles.button}
+              onPress={() => this.setState({ showQuestion: true, questionIndex: 1, score: 0})}>
+              <Text style={styles.buttonTxt}>
+                Reset Quiz
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.button}
+              onPress={() => navigation.navigate('Decks')}>
+              <Text style={styles.buttonTxt}>
+                Back to Decks
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      );
     }
 
     const currentQuestion = deck.questions[questionIndex - 1];
