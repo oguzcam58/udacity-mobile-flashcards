@@ -53,9 +53,9 @@ class QuizScreen extends React.Component {
               </Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.button}
-              onPress={() => navigation.navigate('Decks')}>
+              onPress={() => navigation.navigate('DeckDetails', { title: deck.title })}>
               <Text style={styles.buttonTxt}>
-                Back to Decks
+                Back to Deck
               </Text>
             </TouchableOpacity>
           </View>
