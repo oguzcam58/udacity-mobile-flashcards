@@ -3,6 +3,8 @@ import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { Constants } from 'expo';
 import { connect } from 'react-redux';
 import ScoreCard from '../components/ScoreCard';
+import { Permissions } from 'expo';
+import { cancelTodaysNotification } from '../utils/helpers';
 
 class QuizScreen extends React.Component {
   static navigationOptions = {
@@ -13,6 +15,7 @@ class QuizScreen extends React.Component {
     showQuestion: true,
     questionIndex: 1,
     score: 0,
+    notificationId: 0,
   };
 
   correct = () => {
@@ -42,6 +45,8 @@ class QuizScreen extends React.Component {
     }
 
     if (questionIndex > deck.questions.length) {
+      cancelTodaysNotification()
+        .catch((error) => console.log("Couldn't cancel today's notification."));
       return (
         <View style={styles.container}>
           <ScoreCard score={score} title={deck.title} />

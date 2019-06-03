@@ -10,6 +10,7 @@ import { Constants } from 'expo';
 import { connect } from 'react-redux';
 import { fetchDecksResults } from '../utils/api';
 import { receiveDecksAction } from '../actions';
+import { askAndSetForLocalNotifications } from '../utils/helpers';
 
 class DecksScreen extends React.Component {
   static navigationOptions = {
@@ -25,7 +26,11 @@ class DecksScreen extends React.Component {
 
     fetchDecksResults()
       .then((decks) => dispatch(receiveDecksAction(decks)))
-      .then(() => this.setState(() => ({ ready: true })));
+      .then(() => this.setState(() => ({ ready: true })))
+      .then(() => {
+        askAndSetForLocalNotifications()
+          .catch((error) => console.log("Couldn't set notifications."));
+      });
   }
 
   onPress = (deck) => {
